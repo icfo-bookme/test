@@ -1,25 +1,66 @@
-// checked
-
+import Footer from "../components/shared/Footer/Footer";
 import "./globals.css";
 import { Inter } from "next/font/google";
-
-
-import { PaginationProvider } from "@/context/usePagination";
 import { SearchProvider } from "@/context/SearchContext";
-import HeaderWrapper from "@/components/HeadWrapper/HeaderWrapper";
-import { Footer } from "flowbite-react";
+import { PaginationProvider } from "@/context/usePagination";
+import HeaderWrapper from "../components/HeadWrapper/HeaderWrapper";
 import { UserProvider } from "@/context/UserContext";
 
-// Font setup at module scope
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
 
+export const metadata = {
+  title: "BookMe - Book Hotels, Flights & Tour Packages Worldwide",
+  description:
+    "Book hotels, flights, visas, and tours with BookMe. Find top travel deals and secure bookings instantly.",
+  keywords: [
+    "BookMe",
+    "book hotels online",
+    "cheap flights",
+    "visa services",
+    "tour packages",
+    "global travel deals",
+    "online booking site",
+    "travel agency",
+    "holiday deals",
+  ],
+  alternates: {
+    canonical: "https://bookme.com.bd",
+  },
+  openGraph: {
+    title: "BookMe – Your All-in-One Travel Booking Platform",
+    description: "Easily book hotels, flights, and tour packages worldwide with exclusive deals from BookMe.",
+    url: "https://bookme.com.bd",
+    siteName: "BookMe",
+    images: [
+      {
+        url: "https://bookme.com.bd/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "BookMe Travel Deals and Bookings",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BookMe – Hotels, Flights & Tour Packages Worldwide",
+    description: "Find and book the best hotels, flights, and tours globally with BookMe.",
+    images: ["https://bookme.com.bd/og-image.jpg"],
+    creator: "@BookMeBD",
+  },
+};
+
 export default function DashboardLayout({ children }) {
   return (
     <html lang="en" data-theme="white">
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -27,31 +68,21 @@ export default function DashboardLayout({ children }) {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bookme</title>
       </head>
       <body className={inter.className}>
-        {/*global search provider*/}
         <PaginationProvider>
           <SearchProvider>
-            {" "}
-            <div>
+            <UserProvider>
               <div className="bg-white">
-                <main>
-                  <UserProvider>
-                  <div className="">
-                    <HeaderWrapper />
-                  </div>
-                  <div className="min-h-[100vh] py-[12px]">{children}</div>
-                  <Footer />
-                  </UserProvider>
+                <HeaderWrapper />
+                <main className="min-h-[100vh] py-[12px]">
+                  {children}
                 </main>
+                <Footer />
               </div>
-            </div>
+            </UserProvider>
           </SearchProvider>
         </PaginationProvider>
-
       </body>
     </html>
   );
