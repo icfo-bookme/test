@@ -1,12 +1,14 @@
 // checked
-import Footer from "./components/shared/Footer/Footer";
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 
-import { UserProvider } from "@/lib/UserContext";
+
 import { PaginationProvider } from "@/context/usePagination";
 import { SearchProvider } from "@/context/SearchContext";
 import HeaderWrapper from "@/components/HeadWrapper/HeaderWrapper";
+import { Footer } from "flowbite-react";
+import { UserProvider } from "@/context/UserContext";
 
 // Font setup at module scope
 const inter = Inter({
