@@ -2,10 +2,11 @@
 import Footer from "./components/shared/Footer/Footer";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { SearchProvider } from "@/SearchContext";
-import { PaginationProvider } from "@/services/tour/usePagination";
-import HeaderWrapper from "./components/HeadWrapper/HeaderWrapper";
+
 import { UserProvider } from "@/lib/UserContext";
+import { PaginationProvider } from "@/context/usePagination";
+import { SearchProvider } from "@/context/SearchContext";
+import HeaderWrapper from "@/components/HeadWrapper/HeaderWrapper";
 
 // Font setup at module scope
 const inter = Inter({
